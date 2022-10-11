@@ -18,4 +18,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+     private fun initFirebase(){
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener {
+                task->if(task.isSuccessful){
+            firebaseToken.text = task.result
+            }
+        }
+    }
 }
