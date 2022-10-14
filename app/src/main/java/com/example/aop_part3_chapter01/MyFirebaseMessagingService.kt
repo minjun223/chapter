@@ -24,4 +24,9 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         }
     }
 
+    companion object{
+        private const val CHANNEL_NAME = "Emoji Party"
+        private const val CHANNEL_DESCRIPTION = "Emoji Party를 위한 채널"
+        private const val CHANNEL_ID  = "Channel Id"
+    }
 }
