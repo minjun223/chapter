@@ -7,6 +7,8 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
+        
+         createNotificationChannel()
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
