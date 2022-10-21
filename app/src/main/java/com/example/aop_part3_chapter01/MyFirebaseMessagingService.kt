@@ -11,8 +11,23 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
          createNotificationChannel()
     }
 
-    override fun onMessageReceived(message: RemoteMessage) {
+   override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
+
+        createNotificationChannel()
+
+        val type = remoteMessage().data["type"]
+            ?.let { NotificationType.valueOf(it) }
+        val title = message.data["title"]
+        val message = message.data["message"]
+        
+        type ?:return
+
+
+
+
+        NotificationManagerCompat.from(this)
+            .notify(1, createNotification(type.id, title, message))
     }
     
     private fun createNotificationChannel(){
