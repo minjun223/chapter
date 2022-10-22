@@ -24,8 +24,6 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         type ?:return
 
 
-
-
         NotificationManagerCompat.from(this)
             .notify(1, createNotification(type.id, title, message))
     }
@@ -38,6 +36,8 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             channel.description = CHANNEL_DESCRIPTION
+            
+            (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(channel)
         }
     }
 
