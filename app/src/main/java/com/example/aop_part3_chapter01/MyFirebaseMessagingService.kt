@@ -40,6 +40,12 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(channel)
         }
     }
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        setIntent(intent)
+        updateResult(true)
+    }
 
     companion object{
         private const val CHANNEL_NAME = "Emoji Party"
