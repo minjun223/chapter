@@ -39,7 +39,47 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             
             (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(channel)
         }
-    }
+    }private fun createNotification(type: NotificationType,
+                                       title: String?,
+                                       message: String?)
+        : Notification{
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("notificationType", "${type.title}타입")
+                addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
+            val pendingIntent = PendingIntent.getActivity(this, type.id, intent, FLAG_UPDATE_CURRENT)
+            val noticationBuiler =  NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(paddingIntent)
+                .setAutoCancle(true)
+
+            when(type){
+                NotificationType.NORMAL ->Unit
+                NotificationType.EXPANDABLE->
+                {
+                    noticationBuiler.setStyle{
+                        NotificationCompat.BigTextStyle().bigText(
+                           "😀 😃 😄 😁 😆 😅 😂 🤣 🥲 🥹 ☺️ 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🥸 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁"
+                        )
+                    }
+                }
+                NotificationType.CUSTOM->{
+                    noticationBuiler.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                        .setCustomContentView(
+                            RemoteViews(
+                                packageName,
+                                R.layout.view_custom_notification
+                            ).apply{
+                                setTextViewText(R.id.title, title)
+                                setTextViewText(R.id.message, message)
+                            }
+                        )
+                }
+            }
+            return notificationBuilder.build()
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
