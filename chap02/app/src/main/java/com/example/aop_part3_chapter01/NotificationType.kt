@@ -5,4 +5,5 @@ enum class NotificationType(val title: String, val id: Int){
     EXPANDABLE("확장형 알림", 1),
     CUSTOM("커스텀 알림", 3)
 
+    
 }
