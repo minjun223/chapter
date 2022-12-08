@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 
             })
     }
+     fun initBookRecyclerView(){
+        
+    }
 
     companion object{
         private const val TAG = "MainActivity"
