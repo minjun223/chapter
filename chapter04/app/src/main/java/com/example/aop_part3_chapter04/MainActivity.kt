@@ -48,7 +48,10 @@ class MainActivity : AppCompatActivity() {
             })
     }
      fun initBookRecyclerView(){
-        
+         adapter = BookAdapter()
+
+        binding.bookRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.bookRecyclerView.adapter = adapter
     }
 
     companion object{
