@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 
             })
     }
+    private fun search(keyword: String){
+
+    }
      fun initBookRecyclerView(){
          adapter = BookAdapter()
 
