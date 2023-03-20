@@ -89,7 +89,7 @@ class PlayerFragment: Fragment(R.layout.fragment_player) {
         }
         fragmentPlayerBinding.playerView.player = player
         binding?.let {
-            player?.addListener(object: Player.EventListener{
+            player?.addListener(object: Player.Listener{
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     if(isPlaying){
                         it.bottomPlayerControlButton.setImageResource(R.drawable.ic_baseline_pause_24)
