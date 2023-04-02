@@ -9,7 +9,7 @@ data class VideoModel(
 //    "thumb": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
 //    "title": "Big Buck Bunny"
     val title: String,
-    val source: String,
+    val sources: String,
     val subtitle: String,
     val thumb: String,
     val description: String
